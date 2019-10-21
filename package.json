@@ -1,0 +1,49 @@
+{
+  "name": "user-hobbies-backend",
+  "version": "1.0.0",
+  "description": "user hobbies backend project, hapi/nodejs",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node",
+    "dev": "run-p ts:w nodemon",
+    "nodemon": "nodemon",
+    "ts:w": "tsc -p tsconfig.json -w",
+    "ts:c": "tsc -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhviet/user-hobbies-backend.git"
+  },
+  "keywords": [
+    "hapi/nodejs",
+    "backend",
+    "api"
+  ],
+  "author": "Viet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lhviet/user-hobbies-backend/issues"
+  },
+  "homepage": "https://github.com/lhviet/user-hobbies-backend#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "hapi": "^18.1.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.5"
+  },
+  "devDependencies": {
+    "@types/hapi": "^18.0.2",
+    "@types/lodash": "^4.14.144",
+    "@types/mongoose": "^5.5.21",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "nodemon": "^1.19.4",
+    "npm-run-all": "^4.1.5",
+    "typescript": "next"
+  }
+}
