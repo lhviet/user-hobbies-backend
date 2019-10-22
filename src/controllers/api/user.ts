@@ -5,13 +5,14 @@ import { Hobby, User } from '../../models';
 interface RequestUserPayload extends Request {
   payload: {
     name: string;
+    avatarUrl?: string;
   }
 }
 export async function createUser(req: RequestUserPayload): Promise<object> {
-  const { name } = req.payload;
+  const { name, avatarUrl,  } = req.payload;
   try {
     // Create a new User
-    const user = new User({ name });
+    const user = new User({ name, avatarUrl });
     const newUser = await user.save();
 
     return newUser.toJSON();
@@ -41,10 +42,20 @@ export async function getUsers(req: Request): Promise<any> {
 
 export async function updateUser(req: RequestUserPayload): Promise<object> {
   const { id } = req.params;
-  const { name } = req.payload;
+  const { name, avatarUrl } = req.payload;
   try {
     const user: any = await User.findById(id);
-    user.name = name;
+    if (!name && !avatarUrl) {
+      return user.toJSON();
+    }
+
+    if (name) {
+      user.name = name;
+    }
+
+    if (avatarUrl) {
+      user.avatarUrl = avatarUrl || user.avatarUrl;
+    }
 
     return (await user.save()).toJSON();
   } catch (e) {

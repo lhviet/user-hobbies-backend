@@ -1,4 +1,4 @@
-import { API_V1 } from '../../constants/data';
+import {API_V1, DEFAULT_AVATAR} from '../../constants/data';
 
 import * as hobby from '../../controllers/api/hobby';
 import * as joi from 'joi';
@@ -36,11 +36,13 @@ const routes = [
             .required()
             .min(1)
             .max(4)
+            .default(3)
             .description('The Passion Level for the Hobby item'),
           year: joi.number()
             .required()
             .min(1900)
             .max(2020)
+            .default(2019)
             .description('The Year Since for the Hobby item'),
           userId: joi.string()
             .required()
@@ -70,11 +72,13 @@ const routes = [
             .optional()
             .min(1)
             .max(4)
+            .default(3)
             .description('The new Passion Level for the Hobby item'),
           year: joi.number()
             .optional()
             .min(1900)
             .max(2020)
+            .default(2019)
             .description('The new Year Since for the Hobby item'),
         }
       },

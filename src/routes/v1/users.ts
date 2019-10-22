@@ -1,6 +1,6 @@
 import * as joi from 'joi';
 
-import { API_V1 } from '../../constants/data';
+import { API_V1, DEFAULT_AVATAR } from '../../constants/data';
 
 import * as user from '../../controllers/api/user';
 
@@ -38,6 +38,10 @@ const routes = [
           name: joi.string()
             .required()
             .description('The Name for the User item'),
+          avatarUrl: joi.string()
+            .optional()
+            .default(DEFAULT_AVATAR)
+            .description('The Avatar URL for the User item'),
         }
       },
     },
@@ -57,8 +61,12 @@ const routes = [
         },
         payload: {
           name: joi.string()
-            .required()
-            .description('The new Name for the User item'),
+            .optional()
+            .description('The Name for the User item'),
+          avatarUrl: joi.string()
+            .optional()
+            .default(DEFAULT_AVATAR)
+            .description('The Avatar URL for the User item'),
         }
       },
     },
