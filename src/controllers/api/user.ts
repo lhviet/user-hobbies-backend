@@ -25,8 +25,10 @@ export async function getUsers(req: Request): Promise<any> {
   try {
     let offset = 0,
       limit = 30;
-    if (typeof off === 'string' && typeof lim === 'string') {
+    if (off && typeof off === 'string') {
       offset = parseInt(off);
+    }
+    if (lim && typeof lim === 'string') {
       limit = parseInt(lim);
     }
     const users = await User.find().skip(offset).limit(limit);
@@ -54,6 +56,10 @@ export async function deleteUser(req: Request): Promise<object> {
   const { id } = req.params;
   try {
     const user = await User.findByIdAndDelete(id);
+
+    // Delete dependent hobbies of this User also
+    const hobbies = await Hobby.find({ user: id });
+    hobbies.map(h => Hobby.findByIdAndDelete(h.id));
 
     return user.toJSON();
   } catch (e) {

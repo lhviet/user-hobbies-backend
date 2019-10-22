@@ -5,7 +5,7 @@ import * as mongoose from 'mongoose';
  */
 export const UserSchema = new mongoose.Schema({
   name: {
-    type: String,
+    type: mongoose.Schema.Types.String,
     trim: true,
     required: true,
   },

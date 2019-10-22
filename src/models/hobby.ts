@@ -7,24 +7,24 @@ import { User } from './index';
  */
 export const HobbySchema = new mongoose.Schema({
   name: {
-    type: String,
+    type: mongoose.Schema.Types.String,
     required: true,
     trim: true,
   },
   passionLevel: {
-    type: Number,
+    type: mongoose.Schema.Types.Number,
     required: true,
     default: 1,
     min: 1,
     max: 4,
   },
   year: {
-    type: Number,
+    type: mongoose.Schema.Types.Number,
     required: true,
     default: 2019
   },
   user: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: User,
     required: true
   }
