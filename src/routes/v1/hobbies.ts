@@ -1,4 +1,4 @@
-import {API_V1, DEFAULT_AVATAR} from '../../constants/data';
+import { API_V1 } from '../../constants/data';
 
 import * as hobby from '../../controllers/api/hobby';
 import * as joi from 'joi';

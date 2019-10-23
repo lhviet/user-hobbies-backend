@@ -4,7 +4,7 @@ import mongodb from '../constants/mongodb';
 
 export async function connectDb(): Promise<void> {
   try {
-    await mongoose.connect(mongodb.getURI(), { useNewUrlParser: true });
+    await mongoose.connect(mongodb.getURI(), { useNewUrlParser: true, useUnifiedTopology: true });
   } catch (e) {
     console.log('Failed to connect to MongoDB', e)
   }
