@@ -8,7 +8,7 @@ import startServer from '../../server';
 
 const expect = chai.expect;
 
-describe('Hobbies API Request', () => {
+describe('Users-Hobbies API Request', () => {
   let app: Server;
 
   before(async () => {
@@ -50,7 +50,7 @@ describe('Hobbies API Request', () => {
     });
     expect(res.statusCode).to.equal(200);
 
-    // Delete the Dummy User
+    // Delete the Dummy User and Hobby
     res = await app.inject({
       method: 'DELETE',
       url: `${API_V1}/users/${userId}`,
