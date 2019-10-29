@@ -6,14 +6,22 @@ import routes from './routes/v1';
 import { connectDb } from './services/mongodb-service';
 import swaggerPlulgin from './plugins/swagger';
 
-const result = dotenv.config();
-if (result.error) {
-  throw result.error
+enum ENV {
+  PRODUCTION = 'production',
+  DEVELOPMENT = 'development',
 }
 
-const host = process.env.ENV === 'production' ?
-  'localhost' :
+const host = process.env.ENV === ENV.PRODUCTION ?
+  'ec2-15-164-215-34.ap-northeast-2.compute.amazonaws.com' :
   'localhost';
+
+try {
+  if (process.env.ENV === ENV.DEVELOPMENT) {
+    dotenv.config();
+  }
+} catch (e) {
+  console.error(e);
+}
 
 // create a server with a host and port
 const server: Server = new Server({
