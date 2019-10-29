@@ -18,7 +18,12 @@ const host = process.env.ENV === 'production' ?
 // create a server with a host and port
 const server: Server = new Server({
   host,
-  port: 3000
+  port: process.env.PORT || 3001,
+  routes: {
+    cors: {
+      origin: ["*"],
+    },
+  }
 });
 // add the route
 server.route(routes);

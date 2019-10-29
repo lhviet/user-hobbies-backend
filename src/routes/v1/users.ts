@@ -6,7 +6,7 @@ import * as user from '../../controllers/api/user';
 
 const routes = [
   {
-    method: 'GET',
+    method: ['GET', 'OPTIONS'],
     path: `${API_V1}/users`,
     options: {
       handler: user.getUsers,
@@ -89,7 +89,7 @@ const routes = [
     },
   },
   {
-    method: 'GET',
+    method: ['GET', 'OPTIONS'],
     path: `${API_V1}/users/{id}/hobbies`,
     options: {
       handler: user.getHobbies,
